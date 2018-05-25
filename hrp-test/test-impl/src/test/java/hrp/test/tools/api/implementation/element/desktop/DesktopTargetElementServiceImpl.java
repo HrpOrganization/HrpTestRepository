@@ -6,6 +6,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.concurrent.TimeUnit;
+
 public class DesktopTargetElementServiceImpl implements DesktopTargetElementService {
     /**
      * 选取目标
@@ -34,8 +36,9 @@ public class DesktopTargetElementServiceImpl implements DesktopTargetElementServ
     public boolean doesWebElementExist(WebDriver driver, By selector) {
         boolean bl = true;
         try {
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
             driver.findElement(selector);
-//			System.out.println("查询中");
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         } catch (NoSuchElementException/* |ElementNotVisibleException */ e) {
             e.printStackTrace();
             bl = false;

@@ -22,6 +22,15 @@ public class DesktopDropDownElementServiceImpl implements DesktopDropDownElement
 		// 打开下拉框
 		String inputFieldNamePath = "//label[contains(@class,'x-form-item-label') and (text()='" + fieldName + ":')]"
 				+ "/..//img[contains(@class,'x-form-trigger x-form-trigger-arrow')]";
+		DesktopTargetElementServiceImpl desktopTargetElementService = new DesktopTargetElementServiceImpl();
+		if (desktopTargetElementService.doesWebElementExist(driver, By.xpath(inputFieldNamePath))) {
+		} else {
+			inputFieldNamePath = "//div[contains(@class,'x-panel-tbar x-panel-tbar-noheader')]" +
+					"//div[contains(@class,'x-form-label x-component') and contains(text(),'" + fieldName + "')]" +
+					"/.." +
+					"/following-sibling::td[1]" +
+					"//img[contains(@class,'x-form-trigger x-form-trigger-arrow')]";
+		}
 		driver.findElement(By.xpath(inputFieldNamePath)).click();
 		Thread.sleep(500);
 		// 选择对应选项
@@ -129,7 +138,7 @@ public class DesktopDropDownElementServiceImpl implements DesktopDropDownElement
 			targetPath = "/html/body/div[contains(@class,'x-combo-list x-ignore x-component x-border')]"
 					+ "//td[text()='" + listCodes + "']" + "/..//input[@type='checkbox']";
 			System.out.println(fieldName + ":" + listCodes + "（下拉框选择）");
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.findElement(By.xpath(targetPath)).click();
 			Thread.sleep(500);
 		}

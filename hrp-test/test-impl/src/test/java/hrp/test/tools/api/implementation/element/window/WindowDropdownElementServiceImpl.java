@@ -36,7 +36,7 @@ public class WindowDropdownElementServiceImpl implements WindowDropdownElementSe
 					+ ":')]" + "/.." + "//img[contains(@class,'x-form-trigger x-form-trigger-arrow')]";
 		}
 		driver.findElement(By.xpath(inputFieldNamePath)).click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// 选择对应选项
 		System.out.println(fieldName + ":" + listCode + "（下拉框选择）");
 		String targetPath = "/html/body/div[contains(@class,'x-combo-list x-ignore x-component x-border')]"
@@ -186,7 +186,7 @@ public class WindowDropdownElementServiceImpl implements WindowDropdownElementSe
 			targetPath = "/html/body/div[contains(@class,'x-combo-list x-ignore x-component x-border')]"
 					+ "//td[text()='" + listCodes + "']" + "/..//input[@type='checkbox']";
 			System.out.println(fieldName + ":" + listCodes + "（下拉框选择）");
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.findElement(By.xpath(targetPath)).click();
 			Thread.sleep(500);
 		}

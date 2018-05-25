@@ -4,6 +4,7 @@ import hrp.test.tools.api.service.element.desktop.DesktopInputBoxElementService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class DesktopInputBoxElementServiceImpl implements DesktopInputBoxElementService {
     /**
@@ -20,8 +21,7 @@ public class DesktopInputBoxElementServiceImpl implements DesktopInputBoxElement
                 + "/.." + "/div[contains(@class,'x-form-element')]/div[contains(@class,'x-form-field-wrap')]"
                 + "/*[contains(@class,'x-form-field')]";
         DesktopTargetElementServiceImpl desktopTargetElementService = new DesktopTargetElementServiceImpl();
-//        desktopTargetElementService.doesWebElementExist(driver, By.xpath(inputFieldName))
-        if (driver.findElement(By.xpath(inputFieldName)).isDisplayed()) {
+        if (desktopTargetElementService.doesWebElementExist(driver, By.xpath(inputFieldName))) {
         } else {
             inputFieldName = "//div[contains(@class,'x-panel-tbar x-panel-tbar-noheader')]" +
                     "//div[contains(@class,'x-form-label x-component') and contains(text(),'" + fieldName + "')]" +
@@ -50,6 +50,15 @@ public class DesktopInputBoxElementServiceImpl implements DesktopInputBoxElement
         String inputFieldName = "//label[contains(@class,'x-form-item-label') and (text()='" + fieldName + ":')]"
                 + "/.." + "/div[contains(@class,'x-form-element')]/div[contains(@class,'x-form-field-wrap')]"
                 + "/*[contains(@class,'x-form-field')]";
+        DesktopTargetElementServiceImpl desktopTargetElementService = new DesktopTargetElementServiceImpl();
+        if (desktopTargetElementService.doesWebElementExist(driver, By.xpath(inputFieldName))) {
+        } else {
+            inputFieldName = "//div[contains(@class,'x-panel-tbar x-panel-tbar-noheader')]" +
+                    "//div[contains(@class,'x-form-label x-component') and contains(text(),'" + fieldName + "')]" +
+                    "/.." +
+                    "/following-sibling::td[1]" +
+                    "//input[contains(@class,'x-form-text')]";
+        }
         driver.findElement(By.xpath(inputFieldName)).clear();
         System.out.println(fieldName + ":" + writeSomething + "（输入）");
         driver.findElement(By.xpath(inputFieldName)).sendKeys(writeSomething + Keys.ENTER);
@@ -64,9 +73,13 @@ public class DesktopInputBoxElementServiceImpl implements DesktopInputBoxElement
      * @throws Exception 使用Thread
      */
     @Override
-    public void nullFieldWrite(WebDriver driver, String writeSomething) throws Exception {
-        String inputFieldNamePath = "//img[contains(@class,'gwt-Image x-component')]" + "/.."
-                + "/div/textarea[contains(@class,'x-form-textarea')]";
+    public void nullFieldWrite(WebDriver driver, String writeSomething,String styleCode) throws Exception {
+        String inputFieldListButtonPath = "//input[contains(@class,'x-form-empty-field')]" +
+                "/.." +
+                "//img[contains(@class,'x-form-empty-field')]";
+        Actions actions = new Actions(driver);
+        actions.click(driver.findElement(By.xpath(inputFieldListButtonPath))).perform();
+        String inputFieldNamePath ="//input[contains(@class,'x-form-focus') and contains(@style,'"+styleCode+"')]";
         driver.findElement(By.xpath(inputFieldNamePath)).clear();
         System.out.println("空" + ":" + writeSomething + "（输入）");
         driver.findElement(By.xpath(inputFieldNamePath)).sendKeys(writeSomething);

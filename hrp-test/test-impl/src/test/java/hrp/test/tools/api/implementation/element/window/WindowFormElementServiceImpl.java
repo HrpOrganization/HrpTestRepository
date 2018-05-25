@@ -108,7 +108,7 @@ public class WindowFormElementServiceImpl implements WindowFormElementService {
                 + "/div[contains(@class,'x-unselectable')]" + "/div[contains(@class,'x-combo-list-item') and (text()='"
                 + writeSometing + "')]";
         // backstageTargetListButtun.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         System.out.println("第" + rowNumber + "行 - " + targetFieldName + ":" + writeSometing + "（下拉框选择）");
         driver.findElement(By.xpath(downListFieldTargetCode)).click();
         driver.findElement(By.xpath(backstageTargetField)).sendKeys(Keys.ENTER);
@@ -162,7 +162,7 @@ public class WindowFormElementServiceImpl implements WindowFormElementService {
                 + "/div[contains(@class,'x-unselectable')]"
                 + "//div[contains(@class,'x-grid3-cell-inner x-grid3-col-name') and (text()='" + writeSometing + "')]";
         // backstageTargetListButtun.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         System.out.println("第" + rowNumber + "行 - " + targetFieldName + ":" + writeSometing + "（下拉框选择）");
         driver.findElement(By.xpath(downListFieldTargetCode)).click();
         driver.findElement(By.xpath(backstageTargetField)).sendKeys(Keys.ENTER);

@@ -74,6 +74,6 @@ public class LoginMethodServiceImpl implements LoginMethodService {
 		driver.findElement(By.xpath(secendXpathname)).click();
 		System.out.println("登录页面:" + loginFirstPageName + " → " + loginSecendPageName);
 		Thread.sleep(500);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 }
