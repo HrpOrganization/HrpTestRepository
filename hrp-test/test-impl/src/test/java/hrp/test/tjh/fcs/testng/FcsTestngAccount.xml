@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FcsTestngAccount">
+    <test name="FcsTestngAccount" preserve-order="true">
+        <classes>
+            <class name="hrp.test.tjh.fcs.test.account.TestAccountCost"/>
+            <!--<class name="hrp.test.tjh.fcs.test.project.TestProjectCreat"/>-->
+        </classes>
+    </test>
+</suite>

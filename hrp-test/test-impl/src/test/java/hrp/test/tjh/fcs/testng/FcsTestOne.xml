@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FcsTestOne" verbose="1" preserve-order="true" parallel="false">
+    <!--测试用例名-->
+    <test name="FcsTestOneOne">
+        <classes>
+            <!--测试用例地址-->
+            <class name="hrp.test.tjh.fcs.test.project.TestProjectCreat"/>
+        </classes>
+    </test> <!-- Test -->
+    <listeners>
+        <!-- class-name的值填写为时间创建的监听器的路径 -->
+        <listener class-name="hrp.test.tools.utility.extentreports.ExtentReporterNGListener"/>
+    </listeners>
+</suite> <!-- Suite -->

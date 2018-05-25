@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="warehousing" verbose="1" preserve-order="true" parallel="false">
+<test name="tangible-equipment-warehousing">
+    <classes>
+        <!--<class name="hrp.test.tjh.fas.test.assets.tangible.equipment.warehousing.InformationVerificationTable"/>-->
+        <!--<class name="hrp.test.tjh.fas.test.assets.tangible.equipment.warehousing.BePutInStorage"/>-->
+        <class name="hrp.test.tjh.fas.test.assets.tangible.equipment.warehousing.PaymentAdviceList"/>
+    </classes>
+</test>
+<listeners>
+    <listener class-name="hrp.test.tools.utility.extentreports.ExtentReporterNGListener"/>
+    <listener class-name="hrp.test.tools.utility.extentreports.TestngListener"/>
+</listeners>
+</suite>

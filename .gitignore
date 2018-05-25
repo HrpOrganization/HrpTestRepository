@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Ada template
+
+.idea
+test-output
+test-result
+hrp-test/test-impl/target
+/.settings/
+.classpath
+.project

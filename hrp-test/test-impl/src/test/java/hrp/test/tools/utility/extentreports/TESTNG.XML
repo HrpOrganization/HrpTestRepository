@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <listeners>
+        <listener class-name="hrp.test.tools.utility.extentreports.TestngListener"/>
+        <listener class-name="hrp.test.tools.utility.extentreports.ExtentReporterNGListener"/>
+    </listeners>
+    <test name="Test">
+        <classes>
+            <class name="hrp.test.tjh.fcs.test.project.TestProjectCreat"/>
+        </classes>
+    </test>
+</suite>
