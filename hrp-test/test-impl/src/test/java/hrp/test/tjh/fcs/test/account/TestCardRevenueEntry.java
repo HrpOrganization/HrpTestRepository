@@ -111,11 +111,7 @@ public class TestCardRevenueEntry {
 		windowInputBoxElementService.fieldWrite(driver, 1, "查询条件", "经费号", accountNo);
 		// 查询
 		windowButtonElementService.clickButton(driver, 1, "查询条件", "查询");
-		// 对比服务计价信息(开发再改)
-		// 统计查询→服务计价查询
-
-		// 对比预算列表是否正确
-		// 获取所下预算的金额
+		
 
 	}
 

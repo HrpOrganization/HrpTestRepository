@@ -1,5 +1,5 @@
 package hrp.test.tjh.fcs.test.waterElectricity;
-
+//用户表数录入
 import java.io.IOException;
 //用户表数录入
 import java.util.HashMap;
@@ -53,7 +53,7 @@ public class TestUsers {
 	 */
 	@Test(dataProvider = "excelData")
 	public void users(HashMap<String, String> excelData) throws Exception {
-		// //进入收入支出管理→一般费用录入
+		// //进入水电管理→用户表数录入
 		LoginMethodService loginMethodService = new LoginMethodServiceImpl();
 		loginMethodService.loginPage(driver, "水电管理", "用户表数录入");
 		DesktopInputBoxElementServiceImpl desktopInputBoxElementService=new DesktopInputBoxElementServiceImpl();
