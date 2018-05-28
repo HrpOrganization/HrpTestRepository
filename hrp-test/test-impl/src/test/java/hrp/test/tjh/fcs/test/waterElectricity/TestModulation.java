@@ -1,4 +1,5 @@
 package hrp.test.tjh.fcs.test.waterElectricity;
+
 //表数调整
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,6 +9,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
 import hrp.test.tools.api.implementation.register.login.StartChromeSettingsServiceImpl;
@@ -33,6 +37,7 @@ public class TestModulation {
 		LoginModuleServiceImpl loginModuleService = new LoginModuleServiceImpl();
 		loginModuleService.loginModule(driver, "http://192.168.222.227:8080/fcs-portal/", "USER001", "123456", "财务处");
 	}
+
 	@DataProvider(name = "excelData")
 	public Object[][] getExcelData() throws IOException, BiffException {
 		String keyField = PublicTools.bufferPlus("学生学号", "学生姓名");
@@ -41,6 +46,7 @@ public class TestModulation {
 		Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
 		return excelData;
 	}
+
 	/**
 	 * 测试表数调整流程
 	 *
@@ -49,8 +55,19 @@ public class TestModulation {
 	 */
 	@Test(dataProvider = "excelData")
 	public void modulation(HashMap<String, String> excelData) throws Exception {
-		//进入水电管理→表数调整
+		// 进入水电管理→表数调整
 		LoginMethodService loginMethodService = new LoginMethodServiceImpl();
 		loginMethodService.loginPage(driver, "水电管理", "表数调整");
+		// 账户类型
+		DesktopDropDownElementServiceImpl desktopDropDownElementService = new DesktopDropDownElementServiceImpl();
+		String accountType = excelData.get("账户类型");
+		desktopDropDownElementService.listFieldSelect(driver, "账户类型", accountType);
+		// 工资号/经费号
+		DesktopInputBoxElementServiceImpl desktopInputBoxElementService = new DesktopInputBoxElementServiceImpl();
+		String salaryNumber = excelData.get("工资号/经费号");
+		desktopInputBoxElementService.fieldWrite(driver, "工资号/经费号", salaryNumber);
+		// 查询
+		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
+		desktopButtonElementService.clickButton(driver, "查询");
 	}
 }

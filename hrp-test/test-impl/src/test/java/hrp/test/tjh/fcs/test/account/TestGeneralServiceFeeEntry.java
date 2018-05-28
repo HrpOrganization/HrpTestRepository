@@ -16,6 +16,7 @@ import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementS
 import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowDropdownElementServiceImpl;
+import hrp.test.tools.api.implementation.element.window.WindowInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
 import hrp.test.tools.api.implementation.register.login.StartChromeSettingsServiceImpl;
@@ -72,10 +73,11 @@ public class TestGeneralServiceFeeEntry {
 		String itemInformation = excelData.get("课题/项目信息");
 		DesktopDropDownElementServiceImpl desktopDropDownElementService = new DesktopDropDownElementServiceImpl();
 		desktopDropDownElementService.listFieldWriteSearch(driver, "课题/项目信息", itemInformation, itemInformation);
-		// 选择课题预算（开发在改）
-		WindowDropdownElementServiceImpl windowDropdownElementService = new WindowDropdownElementServiceImpl();
+		
+		// 选择课题预算（数据带不出来）
 		String projectBudget = excelData.get("课题预算");
-		windowDropdownElementService.listFieldSelect(driver, 1, "经费卡信息", "课题预算", projectBudget);
+		desktopDropDownElementService.listFieldWriteSearch(driver, "课题预算", projectBudget, projectBudget);
+		
 		// 选择项目类别
 		String itemClassName = excelData.get("项目类别");
 		desktopDropDownElementService.listFieldSelect(driver, "项目类别", itemClassName);
@@ -116,6 +118,7 @@ public class TestGeneralServiceFeeEntry {
 		System.out.println(getBillValue);
 		Assert.assertEquals(getBillValue, itemMoney);
 		System.out.println("contrastive success");
+		
 	}
 
 	// @AfterMethod

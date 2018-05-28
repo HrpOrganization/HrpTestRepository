@@ -1,4 +1,5 @@
 package hrp.test.tjh.fcs.test.waterElectricity;
+
 //用户表数录入
 import java.io.IOException;
 //用户表数录入
@@ -9,6 +10,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 
@@ -36,6 +39,7 @@ public class TestUsers {
 		LoginModuleServiceImpl loginModuleService = new LoginModuleServiceImpl();
 		loginModuleService.loginModule(driver, "http://192.168.222.227:8080/fcs-portal/", "USER001", "123456", "财务处");
 	}
+
 	@DataProvider(name = "excelData")
 	public Object[][] getExcelData() throws IOException, BiffException {
 		String keyField = PublicTools.bufferPlus("学生学号", "学生姓名");
@@ -56,8 +60,16 @@ public class TestUsers {
 		// //进入水电管理→用户表数录入
 		LoginMethodService loginMethodService = new LoginMethodServiceImpl();
 		loginMethodService.loginPage(driver, "水电管理", "用户表数录入");
-		DesktopInputBoxElementServiceImpl desktopInputBoxElementService=new DesktopInputBoxElementServiceImpl();
-		String salaryNumber= excelData.get("工资号/经费号:");
-		desktopInputBoxElementService.fieldWrite(driver, "工资号/经费号:", salaryNumber);
+		// 工资号/经费号
+		DesktopInputBoxElementServiceImpl desktopInputBoxElementService = new DesktopInputBoxElementServiceImpl();
+		String salaryNumber = excelData.get("工资号/经费号");
+		desktopInputBoxElementService.fieldWrite(driver, "工资号/经费号", salaryNumber);
+		// 仪表类型
+		DesktopDropDownElementServiceImpl desktopDropDownElementService = new DesktopDropDownElementServiceImpl();
+		String instrumentType = excelData.get("仪表类型");
+		desktopDropDownElementService.listFieldSelect(driver, "仪表类型", instrumentType);
+		// 查询
+		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
+		desktopButtonElementService.clickButton(driver, "查询");
 	}
 }

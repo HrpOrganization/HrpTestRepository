@@ -111,7 +111,8 @@ public class TestCardRevenueEntry {
 		windowInputBoxElementService.fieldWrite(driver, 1, "查询条件", "经费号", accountNo);
 		// 查询
 		windowButtonElementService.clickButton(driver, 1, "查询条件", "查询");
-		
+		// 点击
+		// 双击
 
 	}
 
