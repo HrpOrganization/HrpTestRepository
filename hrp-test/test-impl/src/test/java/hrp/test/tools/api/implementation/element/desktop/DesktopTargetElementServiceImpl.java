@@ -40,7 +40,6 @@ public class DesktopTargetElementServiceImpl implements DesktopTargetElementServ
             driver.findElement(selector);
             driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         } catch (NoSuchElementException/* |ElementNotVisibleException */ e) {
-            e.printStackTrace();
             bl = false;
         }
         return bl;
