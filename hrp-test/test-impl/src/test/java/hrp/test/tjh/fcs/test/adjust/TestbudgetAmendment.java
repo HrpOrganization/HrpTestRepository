@@ -16,6 +16,7 @@ import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementSer
 import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopTargetElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowDropdownElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowInputBoxElementServiceImpl;

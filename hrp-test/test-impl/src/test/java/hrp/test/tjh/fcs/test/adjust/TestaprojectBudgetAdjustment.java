@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopTargetElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
@@ -80,7 +81,6 @@ public class TestaprojectBudgetAdjustment {
 		// 退出当前页面
 		LogoutMethodServiceImpl logoutMethodService = new LogoutMethodServiceImpl();
 		logoutMethodService.endPage(driver, "课题预算调整申请");
-
 		// 登录项目经费管理→课题预算调整审批（部门）
 		loginMethodService.loginPage(driver, "项目经费管理", "课题预算调整审批（部门）");
 		// 输入课题/项目编码

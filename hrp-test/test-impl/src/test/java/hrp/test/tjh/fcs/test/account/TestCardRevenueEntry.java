@@ -16,7 +16,9 @@ import org.testng.annotations.Test;
 
 import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopTargetElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowDropdownElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
@@ -112,8 +114,10 @@ public class TestCardRevenueEntry {
 		// 查询
 		windowButtonElementService.clickButton(driver, 1, "查询条件", "查询");
 		// 点击
+		DesktopFormListOperationServiceImpl desktopFormListOperationService=new DesktopFormListOperationServiceImpl();
+		desktopFormListOperationService.formListClickTarget(driver, "经费号", "210120180505");
 		// 双击
-
+		desktopFormListOperationService.formListClickTarget(driver, "经费号", "210120180505");
 	}
 
 }
