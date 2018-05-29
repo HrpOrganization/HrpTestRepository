@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="FcsTestngAccount">
+    <!--<listeners>-->
+        <!--<listener class-name="hrp.test.tools.utility.extentreports.TestngListener"/>-->
+        <!--<listener class-name="hrp.test.tools.utility.extentreports.ExtentReporterNGListener"/>-->
+    <!--</listeners>-->
     <test name="FcsTestngAccount" preserve-order="true">
         <classes>
-            <class name="hrp.test.tjh.fcs.test.account.TestAccountCost"/>
-            <!--<class name="hrp.test.tjh.fcs.test.project.TestProjectCreat"/>-->
+            <!--<class name="hrp.test.tjh.fcs.test.account.TestAccountCost"/>-->
+            <class name="hrp.test.tjh.fcs.test.project.TestDepartmentSubject"/>
         </classes>
     </test>
 </suite>

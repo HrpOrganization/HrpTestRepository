@@ -9,6 +9,7 @@ import org.testng.TestListenerAdapter;
 public class TestngListener extends TestListenerAdapter {
 	private Logger logger = Logger.getLogger(TestngListener.class);
 
+
 	@Override
 	public void onTestStart(ITestResult tr) {
 		super.onTestStart(tr);

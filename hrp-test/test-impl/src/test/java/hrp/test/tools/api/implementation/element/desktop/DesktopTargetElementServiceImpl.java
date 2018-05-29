@@ -36,9 +36,9 @@ public class DesktopTargetElementServiceImpl implements DesktopTargetElementServ
     public boolean doesWebElementExist(WebDriver driver, By selector) {
         boolean bl = true;
         try {
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(1500, TimeUnit.MILLISECONDS);
             driver.findElement(selector);
-            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         } catch (NoSuchElementException/* |ElementNotVisibleException */ e) {
             bl = false;
         }

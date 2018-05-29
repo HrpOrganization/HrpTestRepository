@@ -90,11 +90,10 @@ public class WindowDropdownElementServiceImpl implements WindowDropdownElementSe
                 targetPath = "/html/body/div[contains(@class,'x-combo-list x-ignore x-component x-border')]"
                         + "//span[contains(@class,'x-tree3-node-text') and (text()='" + listCode + "')]";
             }
-            Thread.sleep(1000);
+            Thread.sleep(1500);
             driver.findElement(By.xpath(targetPath)).click();
         }
         Thread.sleep(500);
-
     }
 
     /**
