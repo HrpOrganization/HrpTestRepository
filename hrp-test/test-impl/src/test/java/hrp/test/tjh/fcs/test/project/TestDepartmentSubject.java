@@ -1,6 +1,5 @@
 package hrp.test.tjh.fcs.test.project;
 
-//部门课题信息管理-部门审批（部门）-课题审批（财务）
 import java.io.IOException;
 import java.util.HashMap;
 import org.junit.Assert;
@@ -37,7 +36,8 @@ public class TestDepartmentSubject {
 		ExtentReporterNGListener.driver = driver;
 		// 登录经费卡管理系统
 		LoginModuleServiceImpl loginModuleService = new LoginModuleServiceImpl();
-		loginModuleService.loginModule(driver, "http://192.168.222.227:8080/fcs-portal/", "USER001", "123456", "财务处");
+		loginModuleService.loginModule
+				(driver, "http://192.168.222.227:8080/fcs-portal/", "USER001", "123456", "财务处");
 	}
 
 	@DataProvider(name = "excelData")
@@ -154,7 +154,7 @@ public class TestDepartmentSubject {
 		desktopButtunElementService.clickButton(driver, "审批");
 		// 经费号
 		String accountNO = excelData.get("经费号");
-		windowDropdownElementService.listFieldWriteEnter(driver, 1, "审核窗口", "经费号", accountNO);
+		windowDropdownElementService.listFieldWriteSearch(driver, 1, "审核窗口", "经费号", accountNO,accountNO);
 		// 支付类别
 		String paymentCategory = excelData.get("支付类别");
 		windowDropdownElementService.listFieldSelect(driver, 1, "审核窗口", "支付类别", paymentCategory);

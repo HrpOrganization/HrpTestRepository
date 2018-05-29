@@ -32,7 +32,7 @@ public class StartChromeSettingsServiceImpl implements StartChromeSettingsServic
 		// 引用谷歌浏览器驱动(并调用用户信息)
 		driver = new ChromeDriver(options);
 		// 等待浏览器打开
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		// 浏览器最大化
 		System.out.println("浏览器初始化配置成功");
 		return driver;
