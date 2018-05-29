@@ -6,8 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import java.util.concurrent.TimeUnit;
-
 public class LoginModuleServiceImpl implements LoginModuleService {
 	/**
 	 * 登录相应模块

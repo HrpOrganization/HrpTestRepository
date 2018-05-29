@@ -3,7 +3,6 @@ package hrp.test.tools.api.implementation.element.desktop;
 import hrp.test.tools.api.service.element.desktop.DesktopDropDownElementService;
 import org.openqa.selenium.*;
 
-import java.util.concurrent.TimeUnit;
 
 public class DesktopDropDownElementServiceImpl implements DesktopDropDownElementService {
 
@@ -36,7 +35,6 @@ public class DesktopDropDownElementServiceImpl implements DesktopDropDownElement
 		// 选择对应选项
 		System.out.println(fieldName + ":" + listCode + "（下拉框选择）");
 		String budget = "/html/body/div[contains(@class,'x-combo-list x-ignore x-component x-border')]" +
-		// "/div[contains(@class,'x-unselectable')]" +
 				"//div[contains(@class,'x-combo-list-item') and (text()='" + listCode + "')]";
 		driver.findElement(By.xpath(budget)).click();
 		Thread.sleep(500);
@@ -75,8 +73,12 @@ public class DesktopDropDownElementServiceImpl implements DesktopDropDownElement
 			System.out.println(fieldName + ":" + listCode + "（下拉框选择）");
 			// 选择对应查询结果
 			String targetPath = "/html/body/div[contains(@class,'x-combo-list x-ignore x-component x-border')]" +
-			// "/div[contains(@class,'x-unselectable')]" +
 					"//div[contains(@class,'x-grid3-cell-inner') and (text()='" + listCode + "')]";
+			DesktopTargetElementServiceImpl desktopTargetElementService = new DesktopTargetElementServiceImpl();
+			if(!desktopTargetElementService.doesWebElementExist(driver,By.xpath(targetPath))){
+				targetPath = "/html/body/div[contains(@class,'x-combo-list x-ignore x-component x-border')]"
+						+ "//span[contains(@class,'x-tree3-node-text') and (text()='" + listCode + "')]";
+			}
 			Thread.sleep(2000);
 			driver.findElement(By.xpath(targetPath)).click();
 		}
@@ -138,7 +140,6 @@ public class DesktopDropDownElementServiceImpl implements DesktopDropDownElement
 			targetPath = "/html/body/div[contains(@class,'x-combo-list x-ignore x-component x-border')]"
 					+ "//td[text()='" + listCodes + "']" + "/..//input[@type='checkbox']";
 			System.out.println(fieldName + ":" + listCodes + "（下拉框选择）");
-//			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.findElement(By.xpath(targetPath)).click();
 			Thread.sleep(500);
 		}

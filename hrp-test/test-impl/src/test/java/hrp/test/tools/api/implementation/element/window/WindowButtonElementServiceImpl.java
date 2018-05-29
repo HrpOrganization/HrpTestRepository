@@ -3,7 +3,6 @@ package hrp.test.tools.api.implementation.element.window;
 import hrp.test.tools.api.service.element.window.WindowButtonElementService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 public class WindowButtonElementServiceImpl implements WindowButtonElementService {
 	/**

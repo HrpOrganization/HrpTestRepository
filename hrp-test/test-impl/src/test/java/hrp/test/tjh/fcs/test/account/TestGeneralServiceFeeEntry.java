@@ -75,7 +75,7 @@ public class TestGeneralServiceFeeEntry {
 		// 选择课题预算（开发在改）
 		WindowDropdownElementServiceImpl windowDropdownElementService = new WindowDropdownElementServiceImpl();
 		String projectBudget = excelData.get("课题预算");
-		windowDropdownElementService.listFieldSelect(driver, 1, "经费卡信息", "课题预算", projectBudget);
+		windowDropdownElementService.listFieldWriteSearch(driver, 1, "经费卡信息", "课题预算", projectBudget,projectBudget);
 		// 选择项目类别
 		String itemClassName = excelData.get("项目类别");
 		desktopDropDownElementService.listFieldSelect(driver, "项目类别", itemClassName);

@@ -6,8 +6,6 @@ import hrp.test.tools.api.service.register.login.LoginMethodService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
-
 public class LoginMethodServiceImpl implements LoginMethodService {
 	/**
 	 * 用户登录控制台
@@ -74,6 +72,5 @@ public class LoginMethodServiceImpl implements LoginMethodService {
 		driver.findElement(By.xpath(secendXpathname)).click();
 		System.out.println("登录页面:" + loginFirstPageName + " → " + loginSecendPageName);
 		Thread.sleep(500);
-//		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 }

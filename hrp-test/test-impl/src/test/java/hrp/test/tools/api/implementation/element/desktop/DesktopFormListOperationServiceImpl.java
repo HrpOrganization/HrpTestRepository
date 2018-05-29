@@ -4,7 +4,6 @@ import hrp.test.tools.api.service.element.desktop.DesktopFormListOperationServic
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
 
 public class DesktopFormListOperationServiceImpl implements DesktopFormListOperationService {
 	/**
@@ -37,7 +36,6 @@ public class DesktopFormListOperationServiceImpl implements DesktopFormListOpera
 				+ "/div/div/div/div/div/div[contains(@class,'x-grid3-scroller')]"
 				+ "/div/div/table/tbody/tr/td[contains(@class,'" + targetClassCode + "')]" + "/div[contains(@class,'"
 				+ targetClassCode + "') and (text()='" + targetCode + "')]";
-//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// 目标元素
 		// 获取表头名称
 		String contrastTargetHeadClassPath = "//div[contains(@class,'x-panel x-component')]"
@@ -88,7 +86,6 @@ public class DesktopFormListOperationServiceImpl implements DesktopFormListOpera
 				+ targetClassCode + "') and (text()='" + targetCode + "')]";
 		String targetValue = driver.findElement(By.xpath(targetClassPath)).getText();
 		System.out.println("click:" + targetValue);
-//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(targetClassPath)).click();
 	}
 
