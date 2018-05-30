@@ -23,7 +23,7 @@ import org.testng.xml.XmlSuite;
 
 public class ExtentReporterNGListener implements IReporter {
 
-    private static String cyrPatn = System.getProperty("user.dir") + "/../.."; // 获取本地工程目录
+    private static String cyrPatn = System.getProperty("user.dir") + "\\..\\.."; // 获取本地工程目录
     public static WebDriver driver;
     private ExtentReports extent;
     private static String time = PublicTools.getSystemTime();
@@ -87,9 +87,9 @@ public class ExtentReporterNGListener implements IReporter {
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("GetScreenshot Fail");
+            System.out.println("获取报错截图失败");
         } finally {
-            System.out.println("GetScreenshot Successful" + cyrPatn + "\\test-result\\screenshot\\" + tr.getName()
+            System.out.println("获取报错截图成功：\n" + cyrPatn + "\\test-result\\screenshot\\" + tr.getName()
                     + time + ".png");
 
         }
