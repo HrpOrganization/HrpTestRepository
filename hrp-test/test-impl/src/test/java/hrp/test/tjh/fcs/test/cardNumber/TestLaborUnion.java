@@ -74,5 +74,8 @@ public class TestLaborUnion {
 		// 保存
 		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "保存");
+		// 输入经费号
+		String unionMoney11 = unionMoney;
+		desktopInputBoxElementService.fieldWriteEnter(driver, "经费号", unionMoney11);
 	}
 }

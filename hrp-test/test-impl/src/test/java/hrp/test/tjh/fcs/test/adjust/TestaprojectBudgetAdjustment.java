@@ -58,9 +58,8 @@ public class TestaprojectBudgetAdjustment {
 		loginMethodService.loginPage(driver, "项目经费管理", "课题预算调整申请");
 		// 输入课题编码
 		WindowInputBoxElementServiceImpl windowInputBoxElementService = new WindowInputBoxElementServiceImpl();
-		String projectCode1 = excelData.get("课题编码");
-		// String projectCode1 = TestProjectCreat.projectCode;
-		windowInputBoxElementService.fieldWriteEnter(driver, 1, "课题/项目信息", "课题编码", projectCode1);
+		String projectCode1 = excelData.get("课题/项目编码");
+		windowInputBoxElementService.fieldWriteEnter(driver, 1, "课题/项目信息", "课题/项目编码", projectCode1);
 		// 调增预算
 		DesktopDropDownElementServiceImpl desktopDropDownElementService = new DesktopDropDownElementServiceImpl();
 		String increaseBudget = excelData.get("调增预算");

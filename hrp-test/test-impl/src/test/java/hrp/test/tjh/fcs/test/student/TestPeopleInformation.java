@@ -121,9 +121,12 @@ public class TestPeopleInformation {
 		// 经费号负责人
 		String fundManager = excelData.get("经费号负责人");
 		windowDropdownElementService.listFieldWriteEnter(driver, 1, "学生关联导师窗口", "经费号负责人", fundManager);
-		// 课题/项目名称（改）
+		// 课题/项目名称
 		String projectName = excelData.get("课题/项目名称");
-		windowDropdownElementService.listFieldSelect(driver, 1, "学生关联导师窗口", "课题/项目名称", projectName);
-
+		//windowDropdownElementService.listFieldSelect(driver, 1, "学生关联导师窗口", "课题/项目名称", projectName);
+		windowDropdownElementService.listFieldWriteSearch(driver, 1, "学生关联导师窗口", "课题/项目名称", projectName, projectName);
+		//确认
+		windowButtonElementService.clickButton(driver, 1, "学生关联导师窗口", "确认");
+		
 	}
 }
