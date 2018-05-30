@@ -36,7 +36,7 @@ public class ExcelOperation {
         int columns = sheet.getColumns();
         // 为了返回值是Object[][],定义一个多行单列的二维数组
 //        HashMap<String, String>[][] arrmap = new HashMap[rows - 3][1];
-        HashMap[][] arrmap = new HashMap[rows - 3][1];
+        HashMap<String,String>[][] arrmap = new HashMap[rows - 3][1];
         // 对数组中所有元素hashmap进行初始化
         if (rows > 3) {
             for (int i = 0; i < rows - 3; i++) {
@@ -46,7 +46,7 @@ public class ExcelOperation {
             System.out.println("excel中没有数据");
         }
         // 获得首行的列名，作为hashmap的key值
-        ArrayList<String> arrkey = new ArrayList<>();
+        ArrayList<String> arrkey = new ArrayList<String>();
         for (int c = 0; c < columns; c++) {
             String cellvalue = sheet.getCell(c, 2).getContents();
             arrkey.add(cellvalue);
