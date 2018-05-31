@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 

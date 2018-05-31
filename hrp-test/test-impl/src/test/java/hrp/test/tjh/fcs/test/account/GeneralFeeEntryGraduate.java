@@ -1,6 +1,6 @@
-package hrp.test.tjh.fcs.test.waterElectricity;
+package hrp.test.tjh.fcs.test.account;
 
-//科室表数录入
+//一般费用录入(研究生)
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -9,12 +9,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
-import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
-import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
-import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
-import hrp.test.tools.api.implementation.element.window.WindowFormElementServiceImpl;
+import hrp.test.tools.api.implementation.element.window.WindowDropdownElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
 import hrp.test.tools.api.implementation.register.login.StartChromeSettingsServiceImpl;
@@ -24,7 +20,7 @@ import hrp.test.tools.utility.extentreports.ExtentReporterNGListener;
 import hrp.test.tools.utility.use.PublicTools;
 import jxl.read.biff.BiffException;
 
-public class TestDepartments {
+public class GeneralFeeEntryGraduate {
 	protected WebDriver driver;
 	protected String fileNamePath;
 	protected String sheetName;
@@ -43,37 +39,26 @@ public class TestDepartments {
 
 	@DataProvider(name = "excelData")
 	public Object[][] getExcelData() throws IOException, BiffException {
-		String keyField = PublicTools.bufferPlus("课题/项目名称", "批准总预算", "调整金额");
-		fileNamePath = "FcsTestData/waterElectricity/waterElectricity";
-		sheetName = "TestDepartments";
+		String keyField = PublicTools.bufferPlus("金额");
+		fileNamePath = "FcsTestData/account/account";
+		sheetName = "GeneralFeeEntryGraduate";
 		Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
 		return excelData;
 	}
 
-	/**
-	 * 测试科室表数录入流程
-	 *
-	 * @throws Exception
-	 *             使用Thread
-	 */
 	@Test(dataProvider = "excelData")
-	public void departments(HashMap<String, String> excelData) throws Exception {
-		// //进入水电管理→科室表数录入
+	public void generalFeeEntryGraduate(HashMap<String, String> excelData) throws Exception {
+		// //进入收入支出管理→总务科费用录入
 		LoginMethodService loginMethodService = new LoginMethodServiceImpl();
-		loginMethodService.loginPage(driver, "水电管理", "科室表数录入");
-		// 工资号/经费号
+		loginMethodService.loginPage(driver, "收入支出管理", "一般费用录入");
+		// 刷经费号
 		DesktopInputBoxElementServiceImpl desktopInputBoxElementService = new DesktopInputBoxElementServiceImpl();
-		String salaryNumber = excelData.get("工资号/经费号");
-		desktopInputBoxElementService.fieldWrite(driver, "工资号/经费号", salaryNumber);
-		// 科室
-		String departments = excelData.get("科室");
-		desktopInputBoxElementService.fieldWrite(driver, "科室", departments);
-		// 仪表类型
-		DesktopDropDownElementServiceImpl desktopDropDownElementService = new DesktopDropDownElementServiceImpl();
-		String instrumentType = excelData.get("仪表类型");
-		desktopDropDownElementService.listFieldSelect(driver, "仪表类型", instrumentType);
-		// 查询
-		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
-		desktopButtonElementService.clickButton(driver, "查询");
+		String accountNo = excelData.get("经费号");
+		desktopInputBoxElementService.fieldWriteEnter(driver, "经费号", accountNo);
+		// 子卡信息(改)
+		String daughterCardInformation = excelData.get("子卡信息");
+		WindowDropdownElementServiceImpl windowDropdownElementService = new WindowDropdownElementServiceImpl();
+		windowDropdownElementService.listFieldSelect(driver, 1, "经费卡信息", "子卡信息", daughterCardInformation);
+
 	}
 }

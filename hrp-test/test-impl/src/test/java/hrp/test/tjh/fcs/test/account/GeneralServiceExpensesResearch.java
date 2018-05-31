@@ -1,6 +1,6 @@
 package hrp.test.tjh.fcs.test.account;
 
-//总务科室费用录入
+//总务科室费用录入（课题）
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -26,7 +26,7 @@ import hrp.test.tools.utility.extentreports.ExtentReporterNGListener;
 import hrp.test.tools.utility.use.PublicTools;
 import jxl.read.biff.BiffException;
 
-public class TestGeneralServiceFeeEntry {
+public class GeneralServiceExpensesResearch {
 	protected WebDriver driver;
 	protected String fileNamePath;
 	protected String sheetName;
@@ -46,8 +46,8 @@ public class TestGeneralServiceFeeEntry {
 	@DataProvider(name = "excelData")
 	public Object[][] getExcelData() throws IOException, BiffException {
 		String keyField = PublicTools.bufferPlus("金额");
-		fileNamePath = "FcsTestData//account//account";
-		sheetName = "TestGeneralServiceFeeEntry";
+		fileNamePath = "FcsTestData/account/account";
+		sheetName = "GeneralServiceExpensesResearch";
 		Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
 		return excelData;
 	}
@@ -59,7 +59,7 @@ public class TestGeneralServiceFeeEntry {
 	 *             使用Thread
 	 */
 	@Test(dataProvider = "excelData")
-	public void generalServiceFeeEntry(HashMap<String, String> excelData) throws Exception {
+	public void generalServiceExpensesResearch(HashMap<String, String> excelData) throws Exception {
 		// //进入收入支出管理→总务科费用录入
 		LoginMethodService loginMethodService = new LoginMethodServiceImpl();
 		loginMethodService.loginPage(driver, "收入支出管理", "总务科室费用录入");

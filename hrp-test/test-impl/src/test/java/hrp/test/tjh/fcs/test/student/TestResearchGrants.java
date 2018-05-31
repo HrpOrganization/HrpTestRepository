@@ -64,7 +64,6 @@ public class TestResearchGrants {
 		// 提示--是
 		WindowButtonElementServiceImpl windowButtonElementService = new WindowButtonElementServiceImpl();
 		windowButtonElementService.clickButton(driver, 1, "提示", "是");
-		
 		// 获取
 		DesktopFormListOperationServiceImpl desktopFormListOperationService = new DesktopFormListOperationServiceImpl();
 		desktopFormListOperationService.formListClickTarget(driver, "学号", studentNumber1);
