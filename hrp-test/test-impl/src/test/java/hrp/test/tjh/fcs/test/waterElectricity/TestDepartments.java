@@ -13,6 +13,7 @@ import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementSer
 import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
+import hrp.test.tools.api.implementation.element.window.WindowFormElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
 import hrp.test.tools.api.implementation.register.login.StartChromeSettingsServiceImpl;
@@ -73,5 +74,7 @@ public class TestDepartments {
 		// 查询
 		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "查询");
+		
+		
 	}
 }
