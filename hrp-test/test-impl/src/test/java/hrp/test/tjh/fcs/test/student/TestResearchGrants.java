@@ -10,6 +10,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
+import hrp.test.tools.api.implementation.element.desktop.DesktopTargetElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
@@ -51,20 +53,25 @@ public class TestResearchGrants {
 		// 助研金发放页面
 		LoginMethodServiceImpl loginMethodService = new LoginMethodServiceImpl();
 		loginMethodService.loginPage(driver, "人员信息", "助研金发放");
+		// 输入学生学号
+		// String studentNumber1 = studentNumber;
+		String studentNumber1 = excelData.get("学号");
+		WindowInputBoxElementServiceImpl windowInputBoxElementService = new WindowInputBoxElementServiceImpl();
+		windowInputBoxElementService.fieldWrite(driver, 1, "查询条件", "学生学号", studentNumber1);
 		// 助研金生成
 		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "助研金生成");
 		// 提示--是
 		WindowButtonElementServiceImpl windowButtonElementService = new WindowButtonElementServiceImpl();
 		windowButtonElementService.clickButton(driver, 1, "提示", "是");
+		
+		// 获取
+		DesktopFormListOperationServiceImpl desktopFormListOperationService = new DesktopFormListOperationServiceImpl();
+		desktopFormListOperationService.formListClickTarget(driver, "学号", studentNumber1);
+		
+		// 助研金发放
+		//desktopButtonElementService.clickButton(driver, "助研金发放");
 		// 提示--是
-		windowButtonElementService.clickButton(driver, 1, "提示", "是");
-		// 输入学生学号
-		// String studentNumber1 = studentNumber;
-		String studentNumber1 = excelData.get("学生学号");
-		WindowInputBoxElementServiceImpl windowInputBoxElementService = new WindowInputBoxElementServiceImpl();
-		windowInputBoxElementService.fieldWrite(driver, 1, "查询条件", "学生学号", studentNumber1);
-		// 查询
-		desktopButtonElementService.clickButton(driver, "查询");
+		// windowButtonElementService.clickButton(driver, 1, "提示", "是"); 
 	}
 }

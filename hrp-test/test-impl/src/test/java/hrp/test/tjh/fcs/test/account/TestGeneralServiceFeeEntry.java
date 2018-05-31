@@ -73,9 +73,8 @@ public class TestGeneralServiceFeeEntry {
 		DesktopDropDownElementServiceImpl desktopDropDownElementService = new DesktopDropDownElementServiceImpl();
 		desktopDropDownElementService.listFieldWriteSearch(driver, "课题/项目信息", itemInformation, itemInformation);
 		// 选择课题预算
-		WindowDropdownElementServiceImpl windowDropdownElementService = new WindowDropdownElementServiceImpl();
 		String projectBudget = excelData.get("课题预算");
-		windowDropdownElementService.listFieldWriteSearch(driver, 1, "经费卡信息", "课题预算", projectBudget, projectBudget);
+		desktopDropDownElementService.listFieldCheckButtonSelect(driver, "课题预算", "科研业务费", projectBudget);
 		// 选择项目类别
 		String itemClassName = excelData.get("项目类别");
 		desktopDropDownElementService.listFieldSelect(driver, "项目类别", itemClassName);
@@ -116,7 +115,7 @@ public class TestGeneralServiceFeeEntry {
 		System.out.println(getBillValue);
 		Assert.assertEquals(getBillValue, itemMoney);
 		System.out.println("contrastive success");
-		
+
 	}
 
 	// @AfterMethod

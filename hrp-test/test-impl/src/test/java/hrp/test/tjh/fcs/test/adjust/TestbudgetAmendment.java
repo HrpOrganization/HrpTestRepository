@@ -4,25 +4,22 @@ package hrp.test.tjh.fcs.test.adjust;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import hrp.test.tjh.fcs.test.account.TestGeneralServiceFeeEntry;
 import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
-import hrp.test.tools.api.implementation.element.desktop.DesktopTargetElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowDropdownElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
 import hrp.test.tools.api.implementation.register.login.StartChromeSettingsServiceImpl;
+import hrp.test.tools.api.implementation.register.logout.LogoutMethodServiceImpl;
 import hrp.test.tools.utility.excel.ExcelOperation;
 import hrp.test.tools.utility.extentreports.ExtentReporterNGListener;
 import hrp.test.tools.utility.use.PublicTools;
@@ -69,10 +66,9 @@ public class TestbudgetAmendment {
 		String itemInformation = excelData.get("课题/项目信息");
 		DesktopDropDownElementServiceImpl desktopDropDownElementService = new DesktopDropDownElementServiceImpl();
 		desktopDropDownElementService.listFieldWriteSearch(driver, "课题/项目信息", itemInformation, itemInformation);
-		// 选择课题预算（开发在改）
-		WindowDropdownElementServiceImpl windowDropdownElementService = new WindowDropdownElementServiceImpl();
+		// 选择课题预算
 		String projectBudget = excelData.get("课题预算");
-		windowDropdownElementService.listFieldSelect(driver, 1, "经费卡信息", "课题预算", projectBudget);
+		desktopDropDownElementService.listFieldCheckButtonSelect(driver, "课题预算", "科研业务费", projectBudget);
 		// 选择项目类别
 		String itemClassName = excelData.get("项目类别");
 		desktopDropDownElementService.listFieldSelect(driver, "项目类别", itemClassName);
@@ -86,7 +82,7 @@ public class TestbudgetAmendment {
 		String itemAmount = excelData.get("数量");
 		desktopInputBoxElementService.fieldWrite(driver, "数量", itemAmount);
 		// 填写金额
-		String itemMoney = PublicTools.getRandomMoney(4);
+		String itemMoney = PublicTools.getRandomMoney(3);
 		ExcelOperation.setExcelData(fileNamePath, sheetName, excelData.get("金额"), itemMoney);
 		desktopInputBoxElementService.fieldWrite(driver, "金额", itemMoney);
 		// 点击添加
@@ -103,6 +99,7 @@ public class TestbudgetAmendment {
 			// 如果报错传出截图
 			PublicTools.screenshot(driver, e, "[收入支出管理-总务科室费用录入]");
 		}
+	
 		// 对比服务计价信息
 		// 统计查询→服务计价查询
 		loginMethodService.loginPage(driver, "统计查询", "服务计价查询");
@@ -113,16 +110,41 @@ public class TestbudgetAmendment {
 		System.out.println(getBillValue);
 		Assert.assertEquals(getBillValue, itemMoney);
 		System.out.println("contrastive success");
-
+		// 退出
+		LogoutMethodServiceImpl logoutMethodService = new LogoutMethodServiceImpl();
+		logoutMethodService.endPage(driver, "总务科室费用录入");
+		logoutMethodService.endPage(driver, "服务计价查询");
 		// 登录项目经费管理→预算执行修正
 		loginMethodService.loginPage(driver, "项目经费管理", "预算执行修正");
 		// 输入经费号
-		WindowInputBoxElementServiceImpl windowInputBoxElementService = new WindowInputBoxElementServiceImpl();
-		String money = excelData.get("经费号");
-		windowInputBoxElementService.fieldWrite(driver, 1, "查询条件", "经费号", money);
+		// accountNo
+		String money = accountNo;
+		desktopInputBoxElementService.fieldWriteEnter(driver, "经费号", money);
+		// 金额
+		String itemMoney1 = itemMoney;
+		desktopInputBoxElementService.fieldWriteEnter(driver, "金额", itemMoney1);
+		desktopInputBoxElementService.fieldWriteEnter(driver, "至", itemMoney1);
 		// 查询
 		WindowButtonElementServiceImpl windowButtonElementService = new WindowButtonElementServiceImpl();
 		windowButtonElementService.clickButton(driver, 1, "查询条件", "查询");
+		// 选取目标值
+		desktopFormListOperationService.formListClickTarget(driver, "经费号", "2101200432");
+		//预算修正
+		DesktopButtonElementServiceImpl desktopButtonElementService=new DesktopButtonElementServiceImpl();
+		desktopButtonElementService.clickButton(driver, "预算修正");
+		// 预算执行修正
+		//经费号
+		String Money22=excelData.get("经费号1");
+		WindowInputBoxElementServiceImpl windowInputBoxElementService = new WindowInputBoxElementServiceImpl();
+		windowInputBoxElementService.fieldWriteEnter(driver, 2, "关联预算详情", "经费号", Money22);
+		// 选取目标值
+		desktopFormListOperationService.formListClickTarget(driver, "预算编码", "18-2JSJ01001");
+		// 资金来源
+		String capitalSource = excelData.get("资金来源");
+		WindowDropdownElementServiceImpl windowDropdownElementService = new WindowDropdownElementServiceImpl();
+		windowDropdownElementService.listFieldSelect(driver, 1, "查询条件", "资金来源", capitalSource);
+		// 确定
+		windowButtonElementService.clickButton(driver, 1, "预算修正窗口", "确定");
 	}
 
 }
