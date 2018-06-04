@@ -1,5 +1,5 @@
-package hrp.test.tjh.fas.test.assets.tangible.equipment.warehousing;
-
+package hrp.test.tjh.fas;
+//设备入库
 import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
 import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
@@ -44,7 +44,7 @@ public class BePutInStorage {
     @DataProvider(name = "excelData")
     public Object[][] getExcelData() throws IOException, BiffException {
         String keyField = PublicTools.bufferPlus("发票号", "采购计划号", "设备单价", "入库单号");
-        fileNamePath = "FasTestData\\assets\\tangible\\equipment\\warehousing\\WarehousingTestData";
+        fileNamePath = "FasTestData/storageOfEquipment/storageOfEquipment";
         sheetName = "BePutInStorage";
         Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
         return excelData;
@@ -165,14 +165,12 @@ public class BePutInStorage {
         String budgetUnitCode = excelData.get("预算单元");
         windowDropdownElementService.listFieldWriteSearch
                 (driver, 1,"执行预算", "预算单元", budgetUnitCode, budgetUnitCode);
-        //选择对应预算
-        String budgetCode = excelData.get("预算编码");
-        windowDropdownElementService.listFieldWriteSearch
-                (driver, 1,"执行预算", "预算编码", budgetCode, budgetCode);
-        //选择对应资金来源
-        String budgetSource = excelData.get("资金来源");
-        windowDropdownElementService.listFieldSelect
-                (driver, 1,"执行预算", "资金来源", budgetSource);
+     // 选择预算编码
+     		String budgetCode = excelData.get("预算编码");
+     		windowDropdownElementService.listFieldWriteSearch(driver, 1, "执行预算", "预算编码", budgetCode, budgetCode);
+     // 选择资金来源
+     		String budgetSource = excelData.get("资金来源");
+     		windowDropdownElementService.listFieldWriteSearch(driver, 1, "执行预算", "资金来源", budgetSource, budgetSource);
         //输入本次执行预算金额
         System.out.println(assetsValue);
         System.out.println(amount);

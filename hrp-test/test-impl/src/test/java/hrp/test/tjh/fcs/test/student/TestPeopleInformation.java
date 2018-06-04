@@ -3,6 +3,7 @@ package hrp.test.tjh.fcs.test.student;
 //学生管理
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowDropdownElementServiceImpl;
@@ -19,6 +20,7 @@ import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperatio
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
 import hrp.test.tools.api.implementation.register.login.StartChromeSettingsServiceImpl;
+import hrp.test.tools.api.implementation.register.logout.LogoutMethodServiceImpl;
 import hrp.test.tools.api.service.register.login.LoginMethodService;
 import hrp.test.tools.utility.excel.ExcelOperation;
 import hrp.test.tools.utility.extentreports.ExtentReporterNGListener;
@@ -123,10 +125,40 @@ public class TestPeopleInformation {
 		windowDropdownElementService.listFieldWriteEnter(driver, 1, "学生关联导师窗口", "经费号负责人", fundManager);
 		// 课题/项目名称
 		String projectName = excelData.get("课题/项目名称");
-		//windowDropdownElementService.listFieldSelect(driver, 1, "学生关联导师窗口", "课题/项目名称", projectName);
 		windowDropdownElementService.listFieldWriteSearch(driver, 1, "学生关联导师窗口", "课题/项目名称", projectName, projectName);
-		//确认
+		// 确认
 		windowButtonElementService.clickButton(driver, 1, "学生关联导师窗口", "确认");
-		
+		// 退出学生管理页面
+		LogoutMethodServiceImpl logoutMethodService = new LogoutMethodServiceImpl();
+		logoutMethodService.endPage(driver, "学生管理");
+		// 助研金发放页面
+		loginMethodService.loginPage(driver, "人员信息", "助研金发放");
+		// 输入学生学号
+		String studentNumber1 = studentNumber;
+		WindowInputBoxElementServiceImpl windowInputBoxElementService = new WindowInputBoxElementServiceImpl();
+		windowInputBoxElementService.fieldWrite(driver, 1, "查询条件", "学生学号", studentNumber1);
+		// 助研金生成
+		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
+		desktopButtonElementService.clickButton(driver, "助研金生成");
+		// 提示--是
+		windowButtonElementService.clickButton(driver, 1, "提示", "是");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		// 提示--是
+		windowButtonElementService.clickButton(driver, 1, "提示", "是");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		// 获取
+		desktopFormListOperationService.formListClickTarget(driver, "学号", studentNumber1);
+		// 助研金发放
+		desktopButtonElementService.clickButton(driver, "助研金发放");
+		// 提示--是
+		windowButtonElementService.clickButton(driver, 1, "提示", "是");
+		// 退出助研金发放页面
+		logoutMethodService.endPage(driver, "助研金发放");
+		// 助研金发放明细页面
+		loginMethodService.loginPage(driver, "统计查询", "助研金发放明细");
+		// 输入学生学号
+		String studentNumber2 = studentNumber1;
+		windowInputBoxElementService.fieldWrite(driver, 1, "查询条件", "学生学号", studentNumber2);
+		desktopButtonElementService.clickButton(driver, "查询");
 	}
 }

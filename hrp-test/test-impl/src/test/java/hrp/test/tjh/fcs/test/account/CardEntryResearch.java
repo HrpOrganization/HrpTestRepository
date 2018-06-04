@@ -1,6 +1,6 @@
 package hrp.test.tjh.fcs.test.account;
 
-//卡收入录入
+//卡收入录入（课题）
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ import hrp.test.tools.utility.extentreports.ExtentReporterNGListener;
 import hrp.test.tools.utility.use.PublicTools;
 import jxl.read.biff.BiffException;
 
-public class TestCardRevenueEntry {
+public class CardEntryResearch {
 	protected WebDriver driver;
 	protected String fileNamePath;
 	protected String sheetName;
@@ -50,8 +50,8 @@ public class TestCardRevenueEntry {
 	@DataProvider(name = "excelData")
 	public Object[][] getExcelData() throws IOException, BiffException {
 		String keyField = PublicTools.bufferPlus("金额");
-		fileNamePath = "FcsTestData//account//account";
-		sheetName = "TestCardRevenueEntry";
+		fileNamePath = "FcsTestData/account/account";
+		sheetName = "CardEntryResearch";
 		Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
 		return excelData;
 	}
@@ -63,7 +63,7 @@ public class TestCardRevenueEntry {
 	 *             使用Thread
 	 */
 	@Test(dataProvider = "excelData")
-	public void cardRevenueEntry(HashMap<String, String> excelData) throws Exception {
+	public void cardEntryResearch(HashMap<String, String> excelData) throws Exception {
 		// //进入收入支出管理→卡收入录入
 		LoginMethodService loginMethodService = new LoginMethodServiceImpl();
 		loginMethodService.loginPage(driver, "收入支出管理", "卡收入录入");
@@ -114,7 +114,7 @@ public class TestCardRevenueEntry {
 		// 查询
 		windowButtonElementService.clickButton(driver, 1, "查询条件", "查询");
 		// 点击
-		DesktopFormListOperationServiceImpl desktopFormListOperationService=new DesktopFormListOperationServiceImpl();
+		DesktopFormListOperationServiceImpl desktopFormListOperationService = new DesktopFormListOperationServiceImpl();
 		desktopFormListOperationService.formListClickTarget(driver, "经费号", "210120180505");
 		// 双击
 		desktopFormListOperationService.formListClickTarget(driver, "经费号", "210120180505");
