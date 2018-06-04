@@ -4,15 +4,12 @@ package hrp.test.tjh.fcs.test.waterElectricity;
 import java.io.IOException;
 import java.util.HashMap;
 
+import hrp.test.tools.api.implementation.element.desktop.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
-import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
-import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
-import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowFormElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
@@ -75,5 +72,11 @@ public class TestDepartments {
 		// 查询
 		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "查询");
+
+		DesktopFormElementServiceImpl desktopFormElementService = new DesktopFormElementServiceImpl();
+		desktopFormElementService.guideFieldWrite
+                (driver,"本月止码","4000","序号,16","仪表类型,冷水表","经费号,11604201");
+		//保存
+        desktopButtonElementService.clickButton(driver,"保存");
 	}
 }
