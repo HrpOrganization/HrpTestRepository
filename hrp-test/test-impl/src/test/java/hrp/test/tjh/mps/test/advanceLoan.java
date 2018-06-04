@@ -84,15 +84,15 @@ public class advanceLoan {
 		String bankNo = excelData.get("银行账号");
 		amount = excelData.get("金额(元)");
 		WindowFormElementServiceImpl popupFormElementService = new WindowFormElementServiceImpl();
-		popupFormElementService.rowFieldDownListSelect(driver, 1, "收(付)款人信息--必填", "1", "收(付)款方式", prTypeCode);
-		popupFormElementService.rowFieldDownListSelect(driver, 1, "收(付)款人信息--必填", "1", "收(付)款人类型", prType);
-		popupFormElementService.rowFieldDownListWriteSearch(driver, 1, "收(付)款人信息--必填", "1", "工号/学号/供应商编码", prEmpCode);
-		popupFormElementService.rowFieldWrite(driver, 1, "收(付)款人信息--必填", "1", "姓名/供应商名称", prEmpName);
-		popupFormElementService.rowFieldDownListSelect(driver, 1, "收(付)款人信息--必填", "1", "银行卡类型", bankCardType);
-		popupFormElementService.rowFieldWrite(driver, 1, "收(付)款人信息--必填", "1", "开户名", bankOwner);
-		popupFormElementService.rowFieldDownListWriteSearch(driver, 1, "收(付)款人信息--必填", "1", "开户银行", openBankName);
-		popupFormElementService.rowFieldWrite(driver, 1, "收(付)款人信息--必填", "1", "银行账号", bankNo);
-		popupFormElementService.rowFieldWrite(driver, 1, "收(付)款人信息--必填", "1", "金额(元)", amount);
+		popupFormElementService.fieldDownListSelect(driver, 1, "收(付)款人信息--必填", "1", "收(付)款方式", prTypeCode);
+		popupFormElementService.fieldDownListSelect(driver, 1, "收(付)款人信息--必填", "1", "收(付)款人类型", prType);
+		popupFormElementService.fieldDownListWriteSearch(driver, 1, "收(付)款人信息--必填", "1", "工号/学号/供应商编码", prEmpCode);
+		popupFormElementService.fieldWrite(driver, 1, "收(付)款人信息--必填", "1", "姓名/供应商名称", prEmpName);
+		popupFormElementService.fieldDownListSelect(driver, 1, "收(付)款人信息--必填", "1", "银行卡类型", bankCardType);
+		popupFormElementService.fieldWrite(driver, 1, "收(付)款人信息--必填", "1", "开户名", bankOwner);
+		popupFormElementService.fieldDownListWriteSearch(driver, 1, "收(付)款人信息--必填", "1", "开户银行", openBankName);
+		popupFormElementService.fieldWrite(driver, 1, "收(付)款人信息--必填", "1", "银行账号", bankNo);
+		popupFormElementService.fieldWrite(driver, 1, "收(付)款人信息--必填", "1", "金额(元)", amount);
 
 	}
 }
