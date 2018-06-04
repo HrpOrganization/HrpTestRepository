@@ -1,5 +1,6 @@
-package hrp.test.tjh.fas.test.bePutInStorage.equipment;
-//应付款通知单（设备）
+package hrp.test.tjh.fas.test.bePutInStorage.vehicle;
+
+//应付款通知单（车辆）
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +23,7 @@ import hrp.test.tools.utility.extentreports.ExtentReporterNGListener;
 import hrp.test.tools.utility.use.PublicTools;
 import jxl.read.biff.BiffException;
 
-public class ADebitNoteEquipment {
+public class ADebitNoteVehicle {
 	protected WebDriver driver;
 	protected String fileNamePath;
 	protected String sheetName;
@@ -44,17 +45,17 @@ public class ADebitNoteEquipment {
 	public Object[][] getExcelData() throws IOException, BiffException {
 		// 添加需要保存的值（用于获取该值坐标）
 		String keyField = PublicTools.bufferPlus("");
-		fileNamePath = "FasTestData/bePutInStorage/equipment/equipment";
-		sheetName = "ADebitNoteEquipment";
+		fileNamePath = "FasTestData/bePutInStorage/vehicle/vehicle";
+		sheetName = "ADebitNoteVehicle";
 		Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
 		return excelData;
 	}
 
 	@Test(dataProvider = "excelData")
-	public void aDebitNoteEquipment(HashMap<String, String> excelData) throws Exception {
-		// 进入设备入库 → 应付款通知单(设备)
+	public void aDebitNoteVehicle(HashMap<String, String> excelData) throws Exception {
+		// 进入车辆入库 → 应付款通知单(车辆)
 		LoginMethodServiceImpl loginMethodService = new LoginMethodServiceImpl();
-		loginMethodService.loginPage(driver, "设备入库", "应付款通知单（设备）");
+		loginMethodService.loginPage(driver, "车辆入库", "应付款通知单（车辆）");
 		// 新增应付款通知单
 		DesktopButtonElementServiceImpl desktopButtunElementService = new DesktopButtonElementServiceImpl();
 		desktopButtunElementService.clickButton(driver, "新增");
@@ -80,8 +81,9 @@ public class ADebitNoteEquipment {
 		windowDropdownElementService.listFieldWriteSearch(driver, 1, "收款单位信息确认", "收款单位", supplier, supplier);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// 银行账号
-		//String bankNo = excelData.get("银行账号");
-		//windowInputBoxElementService.fieldWrite(driver, 1, "收款单位信息确认", "银行帐号", bankNo);
+		// String bankNo = excelData.get("银行账号");
+		// windowInputBoxElementService.fieldWrite(driver, 1, "收款单位信息确认", "银行帐号",
+		// bankNo);
 		// 开户银行
 		// String bankName = excelData.get("开户银行");
 		// windowDropdownElementService.listFieldWriteSearch(driver, 1, "收款单位信息确认",
@@ -98,6 +100,6 @@ public class ADebitNoteEquipment {
 		// LogoutMethodServiceImpl logoutMethodService = new LogoutMethodServiceImpl();
 		// logoutMethodService.userLogout(driver);
 		// driver.quit();
-	}
 
+	}
 }

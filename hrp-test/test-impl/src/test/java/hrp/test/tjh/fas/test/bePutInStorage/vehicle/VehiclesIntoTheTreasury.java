@@ -55,7 +55,7 @@ public class VehiclesIntoTheTreasury {
 	}
 
 	@Test(dataProvider = "excelData")
-	public void bePutInStorageEquipment(HashMap<String, String> excelData) throws Exception {
+	public void vehiclesIntoTheTreasury(HashMap<String, String> excelData) throws Exception {
 		// 进入设备入库→信息核实表（设备）
 		LoginMethodServiceImpl loginMethodService = new LoginMethodServiceImpl();
 		loginMethodService.loginPage(driver, "车辆入库", "车辆入库");
@@ -169,23 +169,23 @@ public class VehiclesIntoTheTreasury {
 		desktopButtunElementService.clickButton(driver, "入库并发出");
 		// 判断资产卡片生成情况
 		LogoutMethodServiceImpl logoutMethodService = new LogoutMethodServiceImpl();
-		logoutMethodService.endPage(driver, "设备入库");
+		logoutMethodService.endPage(driver, "车辆入库");
 		// 进入车辆入库 → 打印资产卡片（车辆）
-		loginMethodService.loginPage(driver, "设备入库", "打印资产卡片（设备）");
+		loginMethodService.loginPage(driver, "车辆入库", "打印资产卡片（车辆）");
 		// 通过固定资产卡号及设备名称查询
 		DesktopInputBoxElementServiceImpl desktopInputBoxElementService = new DesktopInputBoxElementServiceImpl();
 		desktopInputBoxElementService.fieldWriteEnter(driver, "固定资产卡号", assetCardId);
-		desktopInputBoxElementService.fieldWrite(driver, "设备名称", nameVehicles);
+		desktopInputBoxElementService.fieldWrite(driver, "车辆名称", nameVehicles);
 		desktopButtunElementService.clickButton(driver, "查询");
 		// 以资产名称及所对应金额判断设备是否生成资产卡片
-		contrastTarget = desktopFormListOperationService.formListContrastTarget(driver, "设备名称", nameVehicles, "资产原值");
+		contrastTarget = desktopFormListOperationService.formListContrastTarget(driver, "车辆名称", nameVehicles, "资产原值");
 		System.out.println(contrastTarget);
 		Assert.assertEquals(vehicleUnitPrice, contrastTarget);
 		// 判断入库单生成情况
-		// 退出设备入库页面
+		// 退出车辆入库页面
 		logoutMethodService.endPage(driver, "打印资产卡片（车辆）");
 		// 进入车辆入库单管理页面
-		loginMethodService.loginPage(driver, "设备入库", "车辆入库单管理");
+		loginMethodService.loginPage(driver, "车辆入库", "车辆入库单管理");
 		// 查询所在发票号的单据
 		desktopInputBoxElementService.fieldWrite(driver, "发票号", invoiceNo);
 		desktopButtunElementService.clickButton(driver, "查询");
