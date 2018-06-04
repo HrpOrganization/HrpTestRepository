@@ -4,6 +4,7 @@ package hrp.test.tjh.fcs.test.waterElectricity;
 import java.io.IOException;
 import java.util.HashMap;
 
+import hrp.test.tools.api.implementation.element.desktop.DesktopFormElementServiceImpl;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -69,5 +70,11 @@ public class TestModulation {
 		// 查询
 		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "查询");
+		//获取
+		DesktopFormElementServiceImpl desktopFormElementService = new DesktopFormElementServiceImpl();
+		desktopFormElementService.guideFieldWrite
+				(driver,"调整读数","2000","序号,1","仪表类型,冷水表","账号,100196");
+		//保存
+		desktopButtonElementService.clickButton(driver,"保存");
 	}
 }

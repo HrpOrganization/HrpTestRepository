@@ -5,15 +5,13 @@ import java.io.IOException;
 //用户表数录入
 import java.util.HashMap;
 
+import hrp.test.tools.api.implementation.element.desktop.*;
+import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementServiceImpl;
-import hrp.test.tools.api.implementation.element.desktop.DesktopDropDownElementServiceImpl;
-import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
-import hrp.test.tools.api.implementation.element.desktop.DesktopInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
@@ -72,5 +70,14 @@ public class TestUsers {
 		// 查询
 		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "查询");
+		//获取
+		DesktopFormElementServiceImpl desktopFormElementService = new DesktopFormElementServiceImpl();
+		desktopFormElementService.guideFieldWrite
+				(driver,"本月止码","2000","序号,1","仪表类型,冷水表","新工资号,100986");
+		//保存
+		desktopButtonElementService.clickButton(driver,"保存");
+		//是
+		WindowButtonElementServiceImpl windowButtonElementService=new WindowButtonElementServiceImpl();
+		windowButtonElementService.clickButton(driver,1,"","是");
 	}
 }

@@ -51,7 +51,7 @@ public class TestDepartments {
 	 * 测试科室表数录入流程
 	 *
 	 * @throws Exception
-	 *             使用Thread
+	 *             使用Threadt
 	 */
 	@Test(dataProvider = "excelData")
 	public void departments(HashMap<String, String> excelData) throws Exception {
@@ -72,7 +72,7 @@ public class TestDepartments {
 		// 查询
 		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "查询");
-
+//获取
 		DesktopFormElementServiceImpl desktopFormElementService = new DesktopFormElementServiceImpl();
 		desktopFormElementService.guideFieldWrite
                 (driver,"本月止码","4000","序号,16","仪表类型,冷水表","经费号,11604201");
