@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class DesktopInputBoxElementServiceImpl implements DesktopInputBoxElementService {
-    /**
+	  /**
      * 所在名称右侧输入框内输入值
      *
      * @param driver         固定参数

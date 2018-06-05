@@ -4,7 +4,6 @@ import hrp.test.tools.api.service.element.desktop.DesktopFormListOperationServic
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
 public class DesktopFormListOperationServiceImpl implements DesktopFormListOperationService {
 	/**
 	 * 在单元表格内获取二维表单的目标值所对应的元素值

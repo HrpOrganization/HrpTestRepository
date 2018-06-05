@@ -72,11 +72,10 @@ public class TestDepartments {
 		// 查询
 		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "查询");
-//获取
+		// 获取
 		DesktopFormElementServiceImpl desktopFormElementService = new DesktopFormElementServiceImpl();
-		desktopFormElementService.guideFieldWrite
-                (driver,"本月止码","4000","序号,16","仪表类型,冷水表","经费号,11604201");
-		//保存
-        desktopButtonElementService.clickButton(driver,"保存");
+		desktopFormElementService.guideFieldWrite(driver, "本月止码", "4000", "序号,16", "仪表类型,冷水表", "经费号,11604201");
+		// 保存
+		desktopButtonElementService.clickButton(driver, "保存");
 	}
 }

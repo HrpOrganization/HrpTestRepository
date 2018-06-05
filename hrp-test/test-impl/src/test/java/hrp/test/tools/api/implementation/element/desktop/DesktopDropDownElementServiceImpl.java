@@ -3,10 +3,9 @@ package hrp.test.tools.api.implementation.element.desktop;
 import hrp.test.tools.api.service.element.desktop.DesktopDropDownElementService;
 import org.openqa.selenium.*;
 
-
 public class DesktopDropDownElementServiceImpl implements DesktopDropDownElementService {
 
-    /**
+	 /**
      * 打开右侧下拉框并选择对应选项
      *
      * @param driver    固定参数

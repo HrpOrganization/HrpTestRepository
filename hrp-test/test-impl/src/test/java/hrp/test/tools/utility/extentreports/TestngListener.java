@@ -11,15 +11,15 @@ import org.testng.TestListenerAdapter;
 
 public class TestngListener extends TestListenerAdapter {
 	private Logger logger = Logger.getLogger(TestngListener.class);
-//	protected ExtentReports extent;
-//	protected ExtentTest test;
+	// protected ExtentReports extent;
+	// protected ExtentTest test;
 
 	@Override
 	public void onTestStart(ITestResult tr) {
 		super.onTestStart(tr);
 		logger.info("【" + tr.getName() + " Start1】");
-//		extent=InitDriverCase.getextent();
-//		test= extent.startTest(tr.getName());
+		// extent=InitDriverCase.getextent();
+		// test= extent.startTest(tr.getName());
 	}
 
 	@Override
@@ -27,8 +27,8 @@ public class TestngListener extends TestListenerAdapter {
 		super.onTestFailure(tr);
 		logger.info("【" + tr.getName() + " Failure1】");
 		ExtentReporterNGListener.takeScreenShot(tr);
-//		test.log(LogStatus.FAIL, tr.getThrowable());
-//		extent.endTest(test);
+		// test.log(LogStatus.FAIL, tr.getThrowable());
+		// extent.endTest(test);
 	}
 
 	@Override
@@ -36,16 +36,16 @@ public class TestngListener extends TestListenerAdapter {
 		super.onTestSkipped(tr);
 		ExtentReporterNGListener.takeScreenShot(tr);
 		logger.info("【" + tr.getName() + " Skipped1】");
-//		test.log(LogStatus.SKIP, "SKIP");
-//		extent.endTest(test);
+		// test.log(LogStatus.SKIP, "SKIP");
+		// extent.endTest(test);
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult tr) {
 		super.onTestSuccess(tr);
 		logger.info("【" + tr.getName() + " Success1】");
-//		test.log(LogStatus.PASS, "Pass");
-//		extent.endTest(test);
+		// test.log(LogStatus.PASS, "Pass");
+		// extent.endTest(test);
 	}
 
 	@Override

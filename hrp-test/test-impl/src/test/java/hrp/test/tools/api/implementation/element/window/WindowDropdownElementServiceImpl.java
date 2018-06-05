@@ -4,9 +4,8 @@ import hrp.test.tools.api.implementation.element.desktop.DesktopTargetElementSer
 import hrp.test.tools.api.service.element.window.WindowDropdownElementService;
 import org.openqa.selenium.*;
 
-
 public class WindowDropdownElementServiceImpl implements WindowDropdownElementService {
-    /**
+	 /**
      * 打开弹窗内右侧下拉框并选择对应选项
      *
      * @param driver      固定参数

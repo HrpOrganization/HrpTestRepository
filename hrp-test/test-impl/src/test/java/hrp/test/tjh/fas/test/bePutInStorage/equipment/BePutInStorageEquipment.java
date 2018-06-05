@@ -1,4 +1,5 @@
 package hrp.test.tjh.fas.test.bePutInStorage.equipment;
+
 //设备入库-打印资产卡片（设备）-设备入库单管理
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -191,9 +192,5 @@ public class BePutInStorageEquipment {
 		contrastTarget = desktopFormListOperationService.formListContrastTarget(driver, "入库单号", documentNo, "发票金额(元)");
 		Assert.assertEquals(contrastTarget, money);
 
-		
-		
-
-	
 	}
 }

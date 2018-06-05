@@ -59,13 +59,11 @@ public class SoftwareLibrary {
 		String assetStates = excelData.get("资产状态");
 		DesktopDropDownElementServiceImpl desktopDropDownElementService = new DesktopDropDownElementServiceImpl();
 		desktopDropDownElementService.listFieldSelect(driver, "资产状态", assetStates);
-		//查询
+		// 查询
 		DesktopButtonElementServiceImpl desktopButtunElementService = new DesktopButtonElementServiceImpl();
 		desktopButtunElementService.clickButton(driver, "查询");
-		//没数据
-		
-		
-		
+		// 没数据
+
 		// 选择目标值
 		DesktopFormListOperationServiceImpl desktopFormListOperationService = new DesktopFormListOperationServiceImpl();
 		desktopFormListOperationService.formListClickTarget(driver, "资产 编号", "203");

@@ -89,8 +89,7 @@ public class dailyReimbursement {
 		amount = excelData.get("金额(元)");
 
 		WindowFormElementServiceImpl popupFormElementService = new WindowFormElementServiceImpl();
-		popupFormElementService.fieldDownListSelect
-				(driver, 1, "收(付)款人信息", "1", "收(付)款方式", prTypeCode);
+		popupFormElementService.fieldDownListSelect(driver, 1, "收(付)款人信息", "1", "收(付)款方式", prTypeCode);
 		popupFormElementService.fieldDownListSelect(driver, 1, "收(付)款人信息", "1", "收(付)款人类型", prType);
 		popupFormElementService.fieldDownListWriteSearch(driver, 1, "收(付)款人信息", "1", "工号/学号/供应商编码", prEmpCode);
 		popupFormElementService.fieldWrite(driver, 1, "收(付)款人信息", "1", "姓名/供应商名称", prEmpName);

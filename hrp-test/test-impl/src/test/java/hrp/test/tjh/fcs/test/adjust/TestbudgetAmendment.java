@@ -99,7 +99,7 @@ public class TestbudgetAmendment {
 			// 如果报错传出截图
 			PublicTools.screenshot(driver, e, "[收入支出管理-总务科室费用录入]");
 		}
-	
+
 		// 对比服务计价信息
 		// 统计查询→服务计价查询
 		loginMethodService.loginPage(driver, "统计查询", "服务计价查询");
@@ -129,12 +129,12 @@ public class TestbudgetAmendment {
 		windowButtonElementService.clickButton(driver, 1, "查询条件", "查询");
 		// 选取目标值
 		desktopFormListOperationService.formListClickTarget(driver, "经费号", "2101200432");
-		//预算修正
-		DesktopButtonElementServiceImpl desktopButtonElementService=new DesktopButtonElementServiceImpl();
+		// 预算修正
+		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "预算修正");
 		// 预算执行修正
-		//经费号
-		String Money22=excelData.get("经费号1");
+		// 经费号
+		String Money22 = excelData.get("经费号1");
 		WindowInputBoxElementServiceImpl windowInputBoxElementService = new WindowInputBoxElementServiceImpl();
 		windowInputBoxElementService.fieldWriteEnter(driver, 2, "关联预算详情", "经费号", Money22);
 		// 选取目标值

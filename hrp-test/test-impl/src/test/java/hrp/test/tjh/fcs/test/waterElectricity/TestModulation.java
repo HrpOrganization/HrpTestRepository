@@ -70,11 +70,10 @@ public class TestModulation {
 		// 查询
 		DesktopButtonElementServiceImpl desktopButtonElementService = new DesktopButtonElementServiceImpl();
 		desktopButtonElementService.clickButton(driver, "查询");
-		//获取
+		// 获取
 		DesktopFormElementServiceImpl desktopFormElementService = new DesktopFormElementServiceImpl();
-		desktopFormElementService.guideFieldWrite
-				(driver,"调整读数","2000","序号,1","仪表类型,冷水表","账号,100196");
-		//保存
-		desktopButtonElementService.clickButton(driver,"保存");
+		desktopFormElementService.guideFieldWrite(driver, "调整读数", "2000", "序号,1", "仪表类型,冷水表", "账号,100196");
+		// 保存
+		desktopButtonElementService.clickButton(driver, "保存");
 	}
 }

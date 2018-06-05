@@ -1,4 +1,5 @@
 package hrp.test.tjh.fas.test.bePutInStorage.equipment;
+
 //应付款通知单（设备）
 import java.io.IOException;
 import java.util.HashMap;
@@ -80,8 +81,9 @@ public class ADebitNoteEquipment {
 		windowDropdownElementService.listFieldWriteSearch(driver, 1, "收款单位信息确认", "收款单位", supplier, supplier);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// 银行账号
-		//String bankNo = excelData.get("银行账号");
-		//windowInputBoxElementService.fieldWrite(driver, 1, "收款单位信息确认", "银行帐号", bankNo);
+		// String bankNo = excelData.get("银行账号");
+		// windowInputBoxElementService.fieldWrite(driver, 1, "收款单位信息确认", "银行帐号",
+		// bankNo);
 		// 开户银行
 		// String bankName = excelData.get("开户银行");
 		// windowDropdownElementService.listFieldWriteSearch(driver, 1, "收款单位信息确认",
