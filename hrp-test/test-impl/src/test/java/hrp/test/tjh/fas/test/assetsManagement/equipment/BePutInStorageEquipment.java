@@ -21,6 +21,7 @@ import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
 import hrp.test.tools.api.implementation.register.login.StartChromeSettingsServiceImpl;
 import hrp.test.tools.api.implementation.register.logout.LogoutMethodServiceImpl;
+import hrp.test.tools.utility.contrast.ServerBillContrast;
 import hrp.test.tools.utility.excel.ExcelOperation;
 import hrp.test.tools.utility.extentreports.ExtentReporterNGListener;
 import hrp.test.tools.utility.use.PublicTools;
@@ -46,7 +47,7 @@ public class BePutInStorageEquipment {
 
 	@DataProvider(name = "excelData")
 	public Object[][] getExcelData() throws IOException, BiffException {
-		String keyField = PublicTools.bufferPlus("发票号", "采购计划号", "设备单价", "入库单号");
+		String keyField = PublicTools.bufferPlus("发票号", "采购计划号", "设备单价", "入库单号","设备名称","固定资产编号");
 		fileNamePath = "FasTestData/assetsManagement/equipment/equipment";
 		sheetName = "BePutInStorageEquipment";
 		Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
@@ -89,7 +90,7 @@ public class BePutInStorageEquipment {
 		windowDropdownElementService.listFieldSelect(driver, 1, "核实表", "取得方式", getMethod);
 		// 填写核实表详情
 		// 输入设备名称
-		String assetsName = excelData.get("设备名");
+		String assetsName = PublicTools.getRandomValue("Y", 8);
 		windowInputBoxElementService.fieldWrite(driver, 1, "核实表详情", "设备名", assetsName);
 		// 输入规格型号
 		String specifications = excelData.get("规格型号");
@@ -172,6 +173,9 @@ public class BePutInStorageEquipment {
 		contrastTarget = desktopFormListOperationService.formListContrastTarget(driver, "设备名称", assetsName, "资产原值");
 		System.out.println(contrastTarget);
 		Assert.assertEquals(assetsValue, contrastTarget);
+		// 获取固定资产卡号
+		String cardNumber = desktopFormListOperationService.formListContrastTarget(driver, "设备名称", assetsName, "固定资产编号");
+		ExcelOperation.setExcelData(fileNamePath, sheetName, excelData.get("固定资产编号"), cardNumber);
 		// 判断入库单生成情况
 		// 退出设备入库页面
 		logoutMethodService.endPage(driver, "打印资产卡片（设备）");
@@ -186,6 +190,9 @@ public class BePutInStorageEquipment {
 		// 判断入库单金额是否正确
 		contrastTarget = desktopFormListOperationService.formListContrastTarget(driver, "入库单号", documentNo, "发票金额(元)");
 		Assert.assertEquals(contrastTarget, money);
+		// 判断服务计价是否已下
+		//String targetMoney = ServerBillContrast.fcsSeverBillContrast(driver, "单号", documentNo, "金额");
+		//Assert.assertEquals(money, targetMoney);
 
 	}
 }
