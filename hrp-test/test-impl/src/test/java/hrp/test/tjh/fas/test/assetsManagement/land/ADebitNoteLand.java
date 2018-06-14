@@ -65,9 +65,9 @@ public class ADebitNoteLand {
 		WindowButtonElementServiceImpl windowButtonElementService = new WindowButtonElementServiceImpl();
 		windowButtonElementService.clickButton(driver, 1, "新增付款单", "查询");
 		// 获取
-		DesktopFormListOperationServiceImpl desktopFormListOperationService=new DesktopFormListOperationServiceImpl();
+		DesktopFormListOperationServiceImpl desktopFormListOperationService = new DesktopFormListOperationServiceImpl();
 		desktopFormListOperationService.formListClickTarget(driver, "资产编号--土地", "TD2018050398");
-		//生成付款单
+		// 生成付款单
 		desktopButtunElementService.clickButton(driver, "生成付款单");
 	}
 }

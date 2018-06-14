@@ -59,17 +59,16 @@ public class ADebitNoteVehicle {
 		// 新增应付款通知单
 		DesktopButtonElementServiceImpl desktopButtunElementService = new DesktopButtonElementServiceImpl();
 		desktopButtunElementService.clickButton(driver, "新增");
-		// 输入发票号
-		String invoiceNo = excelData.get("发票号");
+		// 输入入库单号
+		String documentNo = excelData.get("入库单号");
 		WindowInputBoxElementServiceImpl windowInputBoxElementService = new WindowInputBoxElementServiceImpl();
-		windowInputBoxElementService.fieldWrite(driver, 1, "新增付款单", "发票号", invoiceNo);
+		windowInputBoxElementService.fieldWrite(driver, 1, "新增付款单", "入库单号", documentNo);
 		// 查询
 		WindowButtonElementServiceImpl windowButtunElementService = new WindowButtonElementServiceImpl();
 		windowButtunElementService.clickButton(driver, 1, "新增付款单", "查询");
-		// 获取
-		String purchaseNo = excelData.get("采购计划号");
+		// 选择需要新增的单据
 		DesktopFormListOperationServiceImpl desktopFormListOperationService = new DesktopFormListOperationServiceImpl();
-		desktopFormListOperationService.formListClickTarget(driver, "采购计划号", purchaseNo);
+		desktopFormListOperationService.formListClickTarget(driver, "入库单号", documentNo);
 		// 填写备注
 		windowInputBoxElementService.nullFieldWrite(driver, 1, "新增付款单", "width: 1261px; height: 56px", "填写的备注");
 		// 生成付款单

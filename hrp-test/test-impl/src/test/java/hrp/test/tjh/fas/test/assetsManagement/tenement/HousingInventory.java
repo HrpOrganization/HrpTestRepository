@@ -154,28 +154,23 @@ public class HousingInventory {
 		desktopFormListOperationService.formListClickTarget(driver, "金额", initialAssetValue);
 		// 入库
 		windowButtonElementService.clickButton(driver, 1, "入库", "入库");
-		
 
 		/**
-		 * // 退出 
-		 * LogoutMethodServiceImpl logoutMethodService = new LogoutMethodServiceImpl(); logoutMethodService.endPage(driver, "房屋入库");
-		 * // 入库管理页面
-		 * loginMethodService.loginPage(driver, "房屋入库", "入库管理（房屋）");
+		 * // 退出 LogoutMethodServiceImpl logoutMethodService = new
+		 * LogoutMethodServiceImpl(); logoutMethodService.endPage(driver, "房屋入库"); //
+		 * 入库管理页面 loginMethodService.loginPage(driver, "房屋入库", "入库管理（房屋）");
 		 * 
-		 * // 资产状态
-		 *  String assetStates1 = excelData.get("资产状态");
-		 * windowDropdownElementService.listFieldSelect(driver, 1, "查询面板", "资产状态",assetStates1); 
-		 * // 获取
-		 * desktopFormListOperationService.formListClickTarget(driver, "房屋名称",houseName); 
-		 * // 入库退库 
-		 * desktopButtonElementService.clickButton(driver, "入库退库");
-		 * // 提示-是 
-		 * windowButtonElementService.clickButton(driver, 1, "提示", "是"); 
-		 * // 资产状态
-		 * String assetStates2 = excelData.get("资产状态");
-		 * windowDropdownElementService.listFieldSelect(driver, 1, "查询面板", "资产状态",assetStates2); 
-		 * // 获取
-		 * desktopFormListOperationService.formListClickTarget(driver, "房屋名称",houseName);
+		 * // 资产状态 String assetStates1 = excelData.get("资产状态");
+		 * windowDropdownElementService.listFieldSelect(driver, 1, "查询面板",
+		 * "资产状态",assetStates1); // 获取
+		 * desktopFormListOperationService.formListClickTarget(driver,
+		 * "房屋名称",houseName); // 入库退库 desktopButtonElementService.clickButton(driver,
+		 * "入库退库"); // 提示-是 windowButtonElementService.clickButton(driver, 1, "提示",
+		 * "是"); // 资产状态 String assetStates2 = excelData.get("资产状态");
+		 * windowDropdownElementService.listFieldSelect(driver, 1, "查询面板",
+		 * "资产状态",assetStates2); // 获取
+		 * desktopFormListOperationService.formListClickTarget(driver,
+		 * "房屋名称",houseName);
 		 **/
 	}
 }

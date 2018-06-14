@@ -1,6 +1,6 @@
 package hrp.test.tjh.fas.test.assetsManagement.equipment;
 
-//无偿捐出（设备）
+//报废（设备）
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -13,7 +13,6 @@ import hrp.test.tools.api.implementation.element.desktop.DesktopButtonElementSer
 import hrp.test.tools.api.implementation.element.desktop.DesktopFormListOperationServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowButtonElementServiceImpl;
 import hrp.test.tools.api.implementation.element.window.WindowDropdownElementServiceImpl;
-import hrp.test.tools.api.implementation.element.window.WindowInputBoxElementServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginMethodServiceImpl;
 import hrp.test.tools.api.implementation.register.login.LoginModuleServiceImpl;
 import hrp.test.tools.api.implementation.register.login.StartChromeSettingsServiceImpl;
@@ -22,7 +21,7 @@ import hrp.test.tools.utility.extentreports.ExtentReporterNGListener;
 import hrp.test.tools.utility.use.PublicTools;
 import jxl.read.biff.BiffException;
 
-public class FreeChargeDonateEquipment {
+public class ScrapEquipment {
 	protected WebDriver driver;
 	protected String fileNamePath;
 	protected String sheetName;
@@ -45,16 +44,16 @@ public class FreeChargeDonateEquipment {
 		// 添加需要保存的值（用于获取该值坐标）
 		String keyField = PublicTools.bufferPlus("");
 		fileNamePath = "FasTestData/assetsManagement/equipment/equipment";
-		sheetName = "FreeChargeDonateEquipment";
+		sheetName = "ScrapEquipment";
 		Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
 		return excelData;
 	}
 
 	@Test(dataProvider = "excelData")
-	public void freeChargeDonateEquipment(HashMap<String, String> excelData) throws Exception {
-		// 进入设备处置 → 无偿捐出(设备)
+	public void scrapEquipment(HashMap<String, String> excelData) throws Exception {
+		// 进入设备处置 → 报废(设备)
 		LoginMethodServiceImpl loginMethodService = new LoginMethodServiceImpl();
-		loginMethodService.loginPage(driver, "设备处置", "无偿捐出（设备）");
+		loginMethodService.loginPage(driver, "设备处置", "报废（设备）");
 		// 查询
 		// 申请资产单元
 		WindowDropdownElementServiceImpl windowDropdownElementService = new WindowDropdownElementServiceImpl();
@@ -67,6 +66,7 @@ public class FreeChargeDonateEquipment {
 		// 创建
 		DesktopButtonElementServiceImpl desktopButtunElementService = new DesktopButtonElementServiceImpl();
 		desktopButtunElementService.clickButton(driver, "创建");
+		// 新增申请单
 		// 查询
 		windowButtonElementService.clickButton(driver, 1, "新增申请单", "查询");
 		// 获取
@@ -74,6 +74,5 @@ public class FreeChargeDonateEquipment {
 		desktopFormListOperationService.formListClickTarget(driver, "资产编号", excelData.get("资产编号"));
 		// 提交
 		windowButtonElementService.clickButton(driver, 1, "新增申请单", "提交");
-		// 获取（没方法）
 	}
 }

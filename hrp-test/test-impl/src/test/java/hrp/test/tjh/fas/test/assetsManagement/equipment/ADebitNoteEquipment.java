@@ -67,7 +67,6 @@ public class ADebitNoteEquipment {
 		WindowButtonElementServiceImpl windowButtunElementService = new WindowButtonElementServiceImpl();
 		windowButtunElementService.clickButton(driver, 1, "新增付款单", "查询");
 		// 选择需要新增的单据
-		//String purchaseNo = excelData.get("采购计划号");
 		DesktopFormListOperationServiceImpl desktopFormListOperationService = new DesktopFormListOperationServiceImpl();
 		desktopFormListOperationService.formListClickTarget(driver, "入库单号", documentNo);
 		// 填写备注

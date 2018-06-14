@@ -47,7 +47,7 @@ public class VehiclesIntoTheTreasury {
 
 	@DataProvider(name = "excelData")
 	public Object[][] getExcelData() throws IOException, BiffException {
-		String keyField = PublicTools.bufferPlus("发票号", "采购计划号", "车辆单价", "入库单号");
+		String keyField = PublicTools.bufferPlus("发票号", "采购计划号", "车辆单价", "入库单号", "车辆名称", "固定资产编号");
 		fileNamePath = "FasTestData/assetsManagement/vehicle/vehicle";
 		sheetName = "VehiclesIntoTheTreasury";
 		Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
@@ -151,10 +151,7 @@ public class VehiclesIntoTheTreasury {
 		String budgetCode11 = excelData.get("预算编码");
 		windowDropdownElementService.listFieldWriteSearch(driver, 1, "执行预算", "预算编码", budgetCode11, budgetCode11);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		// 选择资金来源
-		// String budgetSource = excelData.get("资金来源");
-		// windowDropdownElementService.listFieldWriteSearch(driver, 1, "执行预算", "资金来源",
-		// budgetSource, budgetSource);
+
 		// 输入本次执行预算金额
 		System.out.println(vehicleUnitPrice);
 		System.out.println(amount);
@@ -181,6 +178,11 @@ public class VehiclesIntoTheTreasury {
 		contrastTarget = desktopFormListOperationService.formListContrastTarget(driver, "车辆名称", nameVehicles, "资产原值");
 		System.out.println(contrastTarget);
 		Assert.assertEquals(vehicleUnitPrice, contrastTarget);
+		// 获取固定资产卡号
+		String cardNumber = desktopFormListOperationService.formListContrastTarget(driver, "车辆名称", nameVehicles,
+				"固定资产编号");
+		ExcelOperation.setExcelData(fileNamePath, sheetName, excelData.get("固定资产编号"), cardNumber);
+
 		// 判断入库单生成情况
 		// 退出车辆入库页面
 		logoutMethodService.endPage(driver, "打印资产卡片（车辆）");

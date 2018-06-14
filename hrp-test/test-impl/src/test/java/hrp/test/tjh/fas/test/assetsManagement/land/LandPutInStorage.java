@@ -1,4 +1,5 @@
 package hrp.test.tjh.fas.test.assetsManagement.land;
+
 //土地入库
 import java.io.IOException;
 import java.util.HashMap;
@@ -48,6 +49,6 @@ public class LandPutInStorage {
 		// 进入土地入库→土地入库
 		LoginMethodServiceImpl loginMethodService = new LoginMethodServiceImpl();
 		loginMethodService.loginPage(driver, "土地入库", "土地入库");
-		//没数据
-}
+		// 没数据
+	}
 }

@@ -47,7 +47,7 @@ public class BePutInStorageEquipment {
 
 	@DataProvider(name = "excelData")
 	public Object[][] getExcelData() throws IOException, BiffException {
-		String keyField = PublicTools.bufferPlus("发票号", "采购计划号", "设备单价", "入库单号","设备名称","固定资产编号");
+		String keyField = PublicTools.bufferPlus("发票号", "采购计划号", "设备单价", "入库单号", "设备名称", "固定资产编号");
 		fileNamePath = "FasTestData/assetsManagement/equipment/equipment";
 		sheetName = "BePutInStorageEquipment";
 		Object[][] excelData = ExcelOperation.getExcelData(fileNamePath, sheetName, keyField);
@@ -174,7 +174,8 @@ public class BePutInStorageEquipment {
 		System.out.println(contrastTarget);
 		Assert.assertEquals(assetsValue, contrastTarget);
 		// 获取固定资产卡号
-		String cardNumber = desktopFormListOperationService.formListContrastTarget(driver, "设备名称", assetsName, "固定资产编号");
+		String cardNumber = desktopFormListOperationService.formListContrastTarget(driver, "设备名称", assetsName,
+				"固定资产编号");
 		ExcelOperation.setExcelData(fileNamePath, sheetName, excelData.get("固定资产编号"), cardNumber);
 		// 判断入库单生成情况
 		// 退出设备入库页面
@@ -191,8 +192,9 @@ public class BePutInStorageEquipment {
 		contrastTarget = desktopFormListOperationService.formListContrastTarget(driver, "入库单号", documentNo, "发票金额(元)");
 		Assert.assertEquals(contrastTarget, money);
 		// 判断服务计价是否已下
-		//String targetMoney = ServerBillContrast.fcsSeverBillContrast(driver, "单号", documentNo, "金额");
-		//Assert.assertEquals(money, targetMoney);
+		// String targetMoney = ServerBillContrast.fcsSeverBillContrast(driver, "单号",
+		// documentNo, "金额");
+		// Assert.assertEquals(money, targetMoney);
 
 	}
 }
